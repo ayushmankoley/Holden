@@ -34,6 +34,10 @@ client = true
 id = "CBA5OGYON72HS535NQKSLOGRWFZNYPIFBWYKIQDIDHLKHFN6DI2U5XVK"
 client = true
 
+[staging.contracts.redemption_controller]
+id = "CAJ4DCJDREAJICGVELJSYCSJ3I6NBDQP4A43AGVW4TQJHIWUUTGNR533"
+client = true
+
 
 ### Production environment configuration (MAINNET – future)
 [production.network]

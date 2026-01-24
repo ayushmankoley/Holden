@@ -1,2 +1,302 @@
-/* Import font for Stellar Design System */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Inconsolata:wght@500&display=swap");
+/* ==========================================================================
+   HOLDEN Design System
+   ========================================================================== */
+
+/* Font Import - Geometric Sans */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+/* ==========================================================================
+   CSS Variables / Design Tokens
+   ========================================================================== */
+
+:root {
+  /* Colors */
+  --bg-100: #f5f5f5; /* page background - very light gray */
+  --text-900: #111111; /* primary text (near black) */
+  --card-dark: #141212; /* deep charcoal card surfaces */
+  --card-caption: #1e1e1e; /* card caption bar */
+  --accent-lime: #a8ff3e; /* neon lime (primary action) */
+  --accent-purple: #6e4bff; /* saturated purple (secondary highlight) */
+  --muted-gray: #cfcfcf; /* chips / small UI background */
+  --glass-ink: rgba(17, 17, 17, 0.88);
+  --white: #ffffff;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+
+  /* Typography */
+  --font-display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+  /* Font Weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+
+  /* Font Sizes - Display */
+  --size-display-xxl: clamp(72px, 10vw, 160px);
+  --size-display-xl: clamp(56px, 8vw, 120px);
+  --size-display-lg: clamp(40px, 5vw, 72px);
+  --size-h2: clamp(32px, 4vw, 48px);
+  --size-h3: clamp(24px, 3vw, 36px);
+  --size-body-lg: clamp(18px, 2vw, 24px);
+  --size-body: 16px;
+  --size-caption: 14px;
+  --size-chip: 13px;
+
+  /* Line Heights */
+  --leading-display: 0.92;
+  --leading-heading: 1.1;
+  --leading-body: 1.5;
+  --leading-tight: 1.35;
+
+  /* Letter Spacing */
+  --tracking-display: -0.02em;
+  --tracking-body: 0;
+  --tracking-chip: 0.06em;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-card: 14px;
+  --radius-pill: 28px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.22);
+  --shadow-card-hover: 0 16px 40px rgba(0, 0, 0, 0.28);
+  --shadow-nav: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.2, 0.9, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 220ms;
+  --duration-slow: 400ms;
+
+  /* Card Dimensions */
+  --card-width: 340px;
+  --card-preview-height: 220px;
+  --card-caption-height: 48px;
+  --card-border-width: 3px;
+
+  /* Ring Animation */
+  --ring-duration: 80s;
+  --ring-radius: min(38vw, 420px);
+}
+
+/* ==========================================================================
+   Reset & Base Styles
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+  font-size: var(--size-body);
+  line-height: var(--leading-body);
+  color: var(--text-900);
+  background-color: var(--bg-100);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Remove default list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Buttons */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Images */
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ==========================================================================
+   Typography Classes
+   ========================================================================== */
+
+.display-xxl {
+  font-family: var(--font-display);
+  font-size: var(--size-display-xxl);
+  font-weight: var(--weight-extrabold);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+}
+
+.display-xl {
+  font-family: var(--font-display);
+  font-size: var(--size-display-xl);
+  font-weight: var(--weight-extrabold);
+  line-height: var(--leading-display);
+  letter-spacing: var(--tracking-display);
+}
+
+.display-lg {
+  font-family: var(--font-display);
+  font-size: var(--size-display-lg);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-display);
+}
+
+.heading-2 {
+  font-family: var(--font-display);
+  font-size: var(--size-h2);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-heading);
+}
+
+.heading-3 {
+  font-family: var(--font-display);
+  font-size: var(--size-h3);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-heading);
+}
+
+.body-lg {
+  font-size: var(--size-body-lg);
+  line-height: var(--leading-tight);
+}
+
+.caption {
+  font-size: var(--size-caption);
+  line-height: var(--leading-body);
+}
+
+.chip-text {
+  font-size: var(--size-chip);
+  letter-spacing: var(--tracking-chip);
+  font-weight: var(--weight-medium);
+}
+
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+.text-center {
+  text-align: center;
+}
+.text-white {
+  color: var(--white);
+}
+.text-muted {
+  color: var(--muted-gray);
+}
+
+.bg-dark {
+  background-color: var(--card-dark);
+}
+.bg-purple {
+  background-color: var(--accent-purple);
+}
+.bg-lime {
+  background-color: var(--accent-lime);
+}
+
+/* ==========================================================================
+   Accessibility - Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .ring-rotator,
+  .marquee__track {
+    animation: none !important;
+    transform: none !important;
+  }
+}
+
+/* Paused state for motion toggle */
+.motion-paused .ring-rotator,
+.motion-paused .marquee__track {
+  animation-play-state: paused !important;
+}
+
+/* ==========================================================================
+   Focus States
+   ========================================================================== */
+
+:focus-visible {
+  outline: 2px dashed var(--accent-lime);
+  outline-offset: 3px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--accent-lime);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(168, 255, 62, 0.25);
+}
+
+/* ==========================================================================
+   Scrollbar Styling
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted-gray);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-900);
+}

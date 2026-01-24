@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Marquee Component Styles
+   ========================================================================== */
+
+.marquee {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: var(--space-4) 0;
+  background: var(--accent-lime);
+  position: relative;
+}
+
+.marquee::before,
+.marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.marquee::before {
+  left: 0;
+  background: linear-gradient(to right, var(--accent-lime), transparent);
+}
+
+.marquee::after {
+  right: 0;
+  background: linear-gradient(to left, var(--accent-lime), transparent);
+}
+
+.marquee__track {
+  display: inline-flex;
+  animation: marquee-scroll linear infinite;
+  animation-duration: 40s;
+  will-change: transform;
+}
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0 var(--space-6);
+  color: var(--text-900);
+  font-size: var(--size-caption);
+  letter-spacing: var(--tracking-chip);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+}
+
+.marquee__dot {
+  width: 4px;
+  height: 4px;
+  background: var(--text-900);
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   Responsive Marquee
+   ========================================================================== */
+
+@media (max-width: 1199px) {
+  .marquee {
+    padding: var(--space-3) 0;
+  }
+
+  .marquee__item {
+    padding: 0 var(--space-4);
+    font-size: 12px;
+  }
+
+  .marquee__track {
+    animation-duration: 35s;
+  }
+}
+
+@media (max-width: 767px) {
+  .marquee {
+    padding: var(--space-2) 0;
+  }
+
+  .marquee::before,
+  .marquee::after {
+    width: 40px;
+  }
+
+  .marquee__item {
+    padding: 0 var(--space-3);
+    font-size: 11px;
+    gap: var(--space-2);
+  }
+
+  .marquee__track {
+    animation-duration: 30s;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .marquee__track {
+    animation: none;
+  }
+}

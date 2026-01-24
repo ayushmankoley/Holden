@@ -1,0 +1,254 @@
+/* ==========================================================================
+   Page Layout Styles
+   ========================================================================== */
+
+.page {
+  min-height: 100vh;
+  padding-top: calc(80px + var(--space-6));
+  /* Account for fixed nav */
+}
+
+.page__header {
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+  background: var(--bg-100);
+}
+
+.page__title {
+  font-family: var(--font-display);
+  font-size: var(--size-display-lg);
+  font-weight: var(--weight-extrabold);
+  color: var(--text-900);
+  margin-bottom: var(--space-3);
+}
+
+.page__subtitle {
+  font-size: var(--size-body-lg);
+  color: var(--text-900);
+  opacity: 0.7;
+}
+
+.page__content {
+  padding: var(--space-6);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   Card Grid
+   ========================================================================== */
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-6);
+}
+
+/* ==========================================================================
+   Data Card (for admin sections)
+   ========================================================================== */
+
+.data-card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  border: 1px solid var(--border-subtle);
+}
+
+.data-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-5);
+}
+
+.data-card__title {
+  font-weight: var(--weight-semibold);
+  font-size: var(--size-body-lg);
+}
+
+.data-card__badge {
+  background: var(--accent-lime);
+  color: var(--text-900);
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+}
+
+/* ==========================================================================
+   Form Elements
+   ========================================================================== */
+
+.form-group {
+  margin-bottom: var(--space-5);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--size-caption);
+  font-weight: var(--weight-medium);
+  color: var(--text-900);
+  margin-bottom: var(--space-2);
+}
+
+.form-input {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--muted-gray);
+  border-radius: var(--radius-sm);
+  font-size: var(--size-body);
+  font-family: inherit;
+  transition: border-color var(--duration-fast);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--accent-lime);
+  box-shadow: 0 0 0 3px rgba(168, 255, 62, 0.2);
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-sm);
+  font-size: var(--size-caption);
+  font-weight: var(--weight-semibold);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  border: none;
+}
+
+.btn--primary {
+  background: var(--accent-lime);
+  color: var(--text-900);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(168, 255, 62, 0.4);
+}
+
+.btn--secondary {
+  background: var(--text-900);
+  color: var(--white);
+}
+
+.btn--secondary:hover {
+  opacity: 0.9;
+}
+
+.btn--outline {
+  background: transparent;
+  border: 1px solid var(--muted-gray);
+  color: var(--text-900);
+}
+
+.btn--outline:hover {
+  border-color: var(--text-900);
+}
+
+/* ==========================================================================
+   Stats Row
+   ========================================================================== */
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.stat-card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  padding: var(--space-5);
+  border: 1px solid var(--border-subtle);
+  text-align: center;
+}
+
+.stat-card__value {
+  font-family: var(--font-display);
+  font-size: var(--size-h2);
+  font-weight: var(--weight-extrabold);
+  color: var(--text-900);
+}
+
+.stat-card__label {
+  font-size: var(--size-caption);
+  color: var(--muted-gray);
+  margin-top: var(--space-2);
+}
+
+/* ==========================================================================
+   Table
+   ========================================================================== */
+
+.table-wrapper {
+  overflow-x: auto;
+  background: var(--white);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border-subtle);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.table th {
+  font-size: var(--size-chip);
+  font-weight: var(--weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-chip);
+  color: var(--muted-gray);
+  background: var(--bg-100);
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.table tr:hover td {
+  background: var(--bg-100);
+}
+
+/* ==========================================================================
+   Empty State
+   ========================================================================== */
+
+.empty-state {
+  text-align: center;
+  padding: var(--space-9);
+  color: var(--muted-gray);
+}
+
+.empty-state__icon {
+  font-size: 48px;
+  margin-bottom: var(--space-4);
+}
+
+.empty-state__title {
+  font-size: var(--size-body-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--text-900);
+  margin-bottom: var(--space-2);
+}
+
+.empty-state__text {
+  font-size: var(--size-caption);
+}

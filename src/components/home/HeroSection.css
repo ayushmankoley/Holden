@@ -1,0 +1,178 @@
+/* ==========================================================================
+   Hero Section Styles
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(var(--space-2) + 60px) var(--space-6) 0;
+  overflow: hidden;
+}
+
+.hero__content {
+  position: relative;
+  z-index: 50;
+  text-align: center;
+  max-width: 1200px;
+  /* Increased to allow horizontal title */
+  width: 100%;
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 6vw, 90px);
+  font-weight: var(--weight-extrabold);
+  line-height: 1.1;
+  letter-spacing: var(--tracking-display);
+  color: var(--text-900);
+  margin-bottom: var(--space-4);
+  white-space: nowrap;
+  /* Force single line */
+}
+
+.hero__title-line {
+  display: inline;
+  /* Horizontal layout */
+}
+
+.hero__glyph {
+  display: inline-block;
+  color: var(--accent-purple);
+  margin: 0 0.05em;
+  font-size: 0.7em;
+  vertical-align: middle;
+  animation: glyph-pulse 3s ease-in-out infinite;
+}
+
+@keyframes glyph-pulse {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.1) rotate(15deg);
+    opacity: 0.9;
+  }
+}
+
+.hero__subtitle {
+  font-size: var(--size-body-lg);
+  line-height: var(--leading-tight);
+  color: var(--text-900);
+  opacity: 0.8;
+  margin-bottom: var(--space-4);
+}
+
+.hero__chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.hero__chip {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  background: var(--white);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  font-size: var(--size-chip);
+  font-weight: var(--weight-medium);
+  letter-spacing: var(--tracking-chip);
+  color: var(--text-900);
+  transition:
+    transform var(--duration-fast) var(--ease-out),
+    background var(--duration-fast);
+}
+
+.hero__chip:hover {
+  transform: translateY(-2px);
+  background: var(--muted-gray);
+}
+
+/* Ring wrapper area - positioned well below hero content */
+.hero__ring-wrapper {
+  position: relative;
+  width: 100%;
+  height: 800px;
+  /* Tall to accommodate large ring */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 150px;
+  /* Push ring down significantly */
+}
+
+/* Marquee at bottom of hero - above cards */
+.hero__marquee {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 30;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+/* Large Desktop (1400px+) */
+@media (min-width: 1400px) {
+  .hero__ring-wrapper {
+    height: 900px;
+    margin-top: 200px;
+  }
+}
+
+/* Desktop (1200px - 1399px) */
+@media (max-width: 1399px) and (min-width: 1200px) {
+  .hero__ring-wrapper {
+    height: 750px;
+    margin-top: 150px;
+  }
+}
+
+/* Tablet (768px - 1199px) */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .hero__title {
+    font-size: clamp(32px, 5vw, 60px);
+    white-space: normal;
+    /* Allow wrap on smaller screens */
+  }
+
+  .hero__ring-wrapper {
+    height: 600px;
+    margin-top: 100px;
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--space-4) + 60px);
+    padding-bottom: var(--space-6);
+  }
+
+  .hero__title {
+    font-size: clamp(28px, 8vw, 48px);
+    white-space: normal;
+    /* Allow wrap on mobile */
+  }
+
+  .hero__ring-wrapper {
+    height: auto;
+    min-height: 350px;
+    margin-top: var(--space-6);
+  }
+
+  .hero__subtitle {
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Card Ring Component Styles
+   ========================================================================== */
+
+.card-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  z-index: 10;
+}
+
+.card-ring__rotator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  transform-origin: center center;
+  animation: ring-spin linear infinite;
+  animation-duration: var(--ring-duration);
+  will-change: transform;
+}
+
+@keyframes ring-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+    /* anticlockwise */
+  }
+}
+
+.card-ring__card {
+  position: absolute;
+  left: 0;
+  top: 0;
+  /* Center card on its position point */
+  margin-left: calc(-170px * var(--card-scale, 0.8));
+  margin-top: calc(-134px * var(--card-scale, 0.8));
+  transform-origin: center center;
+}
+
+/* Scale cards using CSS variable from JS */
+.card-ring__card .asset-card {
+  transform: scale(var(--card-scale, 0.8));
+  transform-origin: center center;
+}
+
+/* ==========================================================================
+   Responsive Ring Adjustments
+   ========================================================================== */
+
+@media (max-width: 1199px) {
+  .card-ring {
+    --ring-duration: 100s;
+    /* Slower on smaller screens */
+  }
+}
+
+@media (max-width: 767px) {
+  /* On mobile, hide ring and show horizontal scroll instead */
+  .card-ring {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   Mobile Cards Row (fallback for mobile)
+   ========================================================================== */
+
+.cards-row {
+  display: none;
+  gap: var(--space-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: var(--space-6) var(--space-4);
+  margin: 0 calc(-1 * var(--space-4));
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.cards-row::-webkit-scrollbar {
+  display: none;
+}
+
+.cards-row .asset-card {
+  scroll-snap-align: center;
+  flex-shrink: 0;
+  min-width: 75%;
+  max-width: 280px;
+}
+
+@media (max-width: 767px) {
+  .cards-row {
+    display: flex;
+  }
+}

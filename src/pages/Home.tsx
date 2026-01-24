@@ -1,22 +1,18 @@
-import { Layout, Text } from "@stellar/design-system";
+import HeroSection from "../components/home/HeroSection";
+import {
+  DescriptionSection,
+  AboutSection,
+  FeaturesSection,
+} from "../components/home/Sections";
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
-    <Layout.Content>
-      <Layout.Inset>
-        <Text as="h1" size="xl">
-          Holden
-        </Text>
-
-        <Text as="p" size="md">
-          Hold What Matters
-        </Text>
-
-        <Text as="p" size="sm" style={{ marginTop: "1rem" }}>
-          Regulated real-world asset issuance on Stellar.
-        </Text>
-      </Layout.Inset>
-    </Layout.Content>
+    <>
+      <HeroSection />
+      <DescriptionSection />
+      <AboutSection />
+      <FeaturesSection />
+    </>
   );
 };
 
