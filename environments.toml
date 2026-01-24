@@ -30,6 +30,10 @@ client = true
 id = "CA7BJCH7EQ74WJY3TY7XDMJYU2QJPMVMZUOEVJ54IJ3C6GMMZZM43DFU"
 client = true
 
+[staging.contracts.issuance_controller]
+id = "CBA5OGYON72HS535NQKSLOGRWFZNYPIFBWYKIQDIDHLKHFN6DI2U5XVK"
+client = true
+
 
 ### Production environment configuration (MAINNET – future)
 [production.network]
