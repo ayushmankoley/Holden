@@ -10,7 +10,7 @@
   position: absolute;
   left: 50%;
   /* Horizontally centered */
-  bottom: -765px;
+  bottom: -1015px;
   /* Ring center below - adjust this to move ring up/down */
   transform: translateX(-50%);
   width: 0;
@@ -82,7 +82,7 @@
 @media (max-width: 1799px) and (min-width: 1600px) {
   .card-ring {
     --ring-duration: 135s;
-    bottom: -800px;
+    bottom: -850px;
   }
 }
 

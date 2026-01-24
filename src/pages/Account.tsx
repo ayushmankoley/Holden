@@ -1,9 +1,12 @@
+import { useWallet } from "../hooks/useWallet";
+import { connectWallet } from "../util/wallet";
 import "./PageStyles.css";
 
 const Account: React.FC = () => {
-  // Mock data - in real app, get from wallet context
-  const isConnected = false;
-  const address = "GCDPEKYIWTH4DWGYPALZ7RLGCP32C6RZ2BZAF4EJEU7BGCGOAEMEIZZ4";
+  const { address, isPending } = useWallet();
+  // Show as connected if we have an address
+  const isConnected = !!address;
+  // Mock KYC status - in real app, fetch from backend
   const isKycApproved = true;
 
   return (
@@ -28,7 +31,13 @@ const Account: React.FC = () => {
             <p style={{ opacity: 0.7, marginBottom: "var(--space-5)" }}>
               Connect a Stellar wallet to view your account and trade assets.
             </p>
-            <button className="btn btn--primary">Connect Wallet</button>
+            <button
+              className="btn btn--primary"
+              onClick={() => void connectWallet()}
+              disabled={isPending}
+            >
+              {isPending ? "Connecting..." : "Connect Wallet"}
+            </button>
           </div>
         ) : (
           <>

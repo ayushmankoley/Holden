@@ -1,4 +1,3 @@
-import { stellarNetwork } from "../contracts/util";
 import { WalletButton } from "./WalletButton";
 import NetworkPill from "./NetworkPill";
 
@@ -12,7 +11,7 @@ const ConnectAccount = () => {
         gap: "10px",
       }}
     >
-      <NetworkPill network={stellarNetwork} />
+      <NetworkPill />
       <WalletButton />
     </div>
   );

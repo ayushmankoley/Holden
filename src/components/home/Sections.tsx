@@ -42,8 +42,10 @@ export const AboutSection: React.FC = () => {
 
         {/* Right Panel - Dark Oval */}
         <div className="about-section__right">
-          <p className="about-section__updates-label">Latest updates</p>
-          <p className="about-section__updates-title">from Holden</p>
+          <div className="about-section__right-header">
+            <p className="about-section__updates-label">Latest updates</p>
+            <p className="about-section__updates-title">from Holden</p>
+          </div>
 
           <div className="about-section__update-card">
             <div className="about-section__update-badge">

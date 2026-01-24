@@ -1,15 +1,35 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { Icon } from "@stellar/design-system";
+import { useWallet } from "../../hooks/useWallet";
+import { connectWallet, disconnectWallet } from "../../util/wallet";
 import "./Navigation.css";
 
 const Navigation: React.FC = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate();
+  const [walletDropdownOpen, setWalletDropdownOpen] = useState(false);
+  const { address, isPending } = useWallet();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const handleConnectClick = () => {
-    void navigate("/account");
+    if (address) {
+      setWalletDropdownOpen(!walletDropdownOpen);
+    } else {
+      void connectWallet();
+    }
+  };
+
+  const handleCopyAddress = async () => {
+    if (address) {
+      await navigator.clipboard.writeText(address);
+      setWalletDropdownOpen(false);
+    }
+  };
+
+  const handleDisconnect = async () => {
+    await disconnectWallet();
+    setWalletDropdownOpen(false);
   };
 
   return (
@@ -40,9 +60,32 @@ const Navigation: React.FC = () => {
         <button
           className="nav__btn nav__btn--connect"
           onClick={handleConnectClick}
+          disabled={isPending}
         >
-          Connect Wallet
+          {isPending
+            ? "Connecting..."
+            : address
+              ? `${address.slice(0, 4)}...${address.slice(-4)}`
+              : "Connect Wallet"}
         </button>
+
+        {/* Wallet Dropdown */}
+        {address && walletDropdownOpen && (
+          <div className="nav__wallet-dropdown">
+            <button
+              className="nav__wallet-dropdown-item"
+              onClick={() => void handleCopyAddress()}
+            >
+              <Icon.Copy01 /> Copy Address
+            </button>
+            <button
+              className="nav__wallet-dropdown-item nav__wallet-dropdown-item--danger"
+              onClick={() => void handleDisconnect()}
+            >
+              <Icon.XClose /> Disconnect
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Dropdown Menu */}
@@ -90,16 +133,6 @@ const Navigation: React.FC = () => {
           role="menuitem"
         >
           Admin
-        </NavLink>
-        <NavLink
-          to="/debug"
-          className={({ isActive }) =>
-            `nav__dropdown-link ${isActive ? "active" : ""}`
-          }
-          onClick={() => setMenuOpen(false)}
-          role="menuitem"
-        >
-          Debugger
         </NavLink>
       </div>
     </nav>

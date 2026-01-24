@@ -1,0 +1,600 @@
+/* ==========================================================================
+   Dashboard Page Styles
+   ========================================================================== */
+
+.dashboard__connect-icon {
+  font-size: 48px;
+  margin-bottom: var(--space-4);
+  color: var(--accent-lime);
+}
+
+.dashboard__connect-icon svg {
+  width: 48px;
+  height: 48px;
+}
+
+/* Dashboard Grid Layout */
+.dashboard__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1.4fr 1.2fr;
+  gap: var(--space-5);
+  align-items: start;
+}
+
+.dashboard__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.dashboard__main {
+  min-height: 400px;
+}
+
+/* ==========================================================================
+   KYC Status Card
+   ========================================================================== */
+
+.kyc-card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  border: 1px solid var(--border-subtle);
+}
+
+.kyc-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.kyc-card__title {
+  font-weight: var(--weight-semibold);
+  font-size: var(--size-body-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.kyc-card__title svg {
+  width: 20px;
+  height: 20px;
+}
+
+.kyc-card__badge {
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+}
+
+.kyc-card__badge--approved {
+  background: var(--accent-lime);
+  color: var(--text-900);
+}
+
+.kyc-card__badge--pending {
+  background: #ffd966;
+  color: var(--text-900);
+}
+
+.kyc-card__badge--not-verified {
+  background: #ff6b6b;
+  color: var(--white);
+}
+
+.kyc-card__description {
+  font-size: var(--size-caption);
+  color: var(--text-900);
+  line-height: var(--leading-body);
+}
+
+.kyc-card__address {
+  font-family: monospace;
+  font-size: 12px;
+  color: var(--text-900);
+  word-break: break-all;
+  background: var(--bg-100);
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  margin-top: var(--space-4);
+}
+
+/* ==========================================================================
+   Trade Panel
+   ========================================================================== */
+
+.trade-panel {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  padding: var(--space-6);
+  border: 1px solid var(--border-subtle);
+}
+
+.trade-panel__header {
+  margin-bottom: var(--space-5);
+}
+
+.trade-panel__title {
+  font-weight: var(--weight-semibold);
+  font-size: var(--size-body-lg);
+  margin-bottom: var(--space-2);
+}
+
+.trade-panel__subtitle {
+  font-size: var(--size-caption);
+  color: var(--muted-gray);
+}
+
+.trade-panel__tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+  background: var(--bg-100);
+  padding: var(--space-1);
+  border-radius: var(--radius-sm);
+}
+
+.trade-panel__tab {
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-sm);
+  font-size: var(--size-caption);
+  font-weight: var(--weight-medium);
+  color: var(--muted-gray);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.trade-panel__tab--active {
+  background: var(--white);
+  color: var(--text-900);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.trade-panel__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.trade-panel__select-wrapper {
+  position: relative;
+}
+
+.trade-panel__select {
+  width: 100%;
+  padding: var(--space-4);
+  padding-right: var(--space-8);
+  border: 1px solid var(--muted-gray);
+  border-radius: var(--radius-sm);
+  font-size: var(--size-body);
+  font-family: inherit;
+  background: var(--white);
+  appearance: none;
+  cursor: pointer;
+}
+
+.trade-panel__select:focus {
+  outline: none;
+  border-color: var(--accent-lime);
+  box-shadow: 0 0 0 3px rgba(168, 255, 62, 0.2);
+}
+
+.trade-panel__select-icon {
+  position: absolute;
+  right: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--muted-gray);
+}
+
+.trade-panel__input-group {
+  position: relative;
+}
+
+.trade-panel__input {
+  width: 100%;
+  padding: var(--space-4);
+  border: 1px solid var(--muted-gray);
+  border-radius: var(--radius-sm);
+  font-size: var(--size-body);
+  font-family: inherit;
+}
+
+.trade-panel__input:focus {
+  outline: none;
+  border-color: var(--accent-lime);
+  box-shadow: 0 0 0 3px rgba(168, 255, 62, 0.2);
+}
+
+.trade-panel__btn-group {
+  position: absolute;
+  right: var(--space-2);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: var(--space-1);
+}
+
+.trade-panel__quick-btn {
+  padding: var(--space-1) var(--space-2);
+  font-size: 10px;
+  font-weight: var(--weight-semibold);
+  color: var(--accent-purple);
+  background: rgba(110, 75, 255, 0.1);
+  border-radius: var(--radius-sm);
+  transition: background var(--duration-fast);
+}
+
+.trade-panel__quick-btn:hover {
+  background: rgba(110, 75, 255, 0.2);
+}
+
+.trade-panel__max-btn {
+  position: absolute;
+  right: var(--space-3);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: var(--space-1) var(--space-2);
+  font-size: 11px;
+  font-weight: var(--weight-semibold);
+  color: var(--accent-purple);
+  background: rgba(110, 75, 255, 0.1);
+  border-radius: var(--radius-sm);
+  transition: background var(--duration-fast);
+}
+
+.trade-panel__max-btn:hover {
+  background: rgba(110, 75, 255, 0.2);
+}
+
+.trade-panel__summary {
+  background: var(--bg-100);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+}
+
+.trade-panel__summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--size-caption);
+  margin-bottom: var(--space-2);
+}
+
+.trade-panel__summary-row:last-child {
+  margin-bottom: 0;
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--border-subtle);
+  font-weight: var(--weight-semibold);
+}
+
+.trade-panel__summary-label {
+  color: var(--muted-gray);
+}
+
+.trade-panel__submit {
+  width: 100%;
+  padding: var(--space-4);
+  border-radius: var(--radius-sm);
+  font-size: var(--size-body);
+  font-weight: var(--weight-semibold);
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.trade-panel__submit--buy {
+  background: var(--accent-lime);
+  color: var(--text-900);
+}
+
+.trade-panel__submit--buy:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(168, 255, 62, 0.4);
+}
+
+.trade-panel__submit--sell {
+  background: var(--text-900);
+  color: var(--white);
+}
+
+.trade-panel__submit--sell:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.trade-panel__submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.trade-panel__locked {
+  text-align: center;
+  padding: var(--space-6);
+  color: var(--muted-gray);
+}
+
+.trade-panel__locked-icon {
+  font-size: 48px;
+  margin-bottom: var(--space-4);
+}
+
+.trade-panel__locked-icon svg {
+  width: 48px;
+  height: 48px;
+  color: var(--muted-gray);
+}
+
+.trade-panel__trustline-warning {
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  font-size: var(--size-caption);
+  color: var(--text-900);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.trade-panel__trustline-warning svg {
+  width: 16px;
+  height: 16px;
+  color: #856404;
+  display: inline;
+  vertical-align: middle;
+  margin-right: var(--space-1);
+}
+
+/* Redeem Account Form */
+.trade-panel__account-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.trade-panel__account-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--weight-semibold);
+  font-size: var(--size-body);
+  color: var(--text-900);
+}
+
+.trade-panel__account-header svg {
+  width: 20px;
+  height: 20px;
+  color: var(--accent-purple);
+}
+
+.trade-panel__account-subtitle {
+  font-size: var(--size-caption);
+  color: var(--text-900);
+  line-height: var(--leading-body);
+}
+
+.trade-panel__form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.trade-panel__form-label {
+  font-size: var(--size-caption);
+  font-weight: var(--weight-medium);
+  color: var(--text-900);
+}
+
+.trade-panel__back-btn {
+  background: none;
+  border: none;
+  color: var(--muted-gray);
+  font-size: var(--size-caption);
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  transition: color var(--duration-fast);
+}
+
+.trade-panel__back-btn:hover {
+  color: var(--text-900);
+}
+
+/* Redeem Confirmation */
+.trade-panel__confirm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.trade-panel__confirm-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: var(--weight-semibold);
+  font-size: var(--size-body);
+  color: var(--accent-lime);
+}
+
+.trade-panel__confirm-header svg {
+  width: 20px;
+  height: 20px;
+}
+
+.trade-panel__confirm-details {
+  background: var(--bg-100);
+  border-radius: var(--radius-sm);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.trade-panel__confirm-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--size-caption);
+  color: var(--text-900);
+}
+
+.trade-panel__confirm-row strong {
+  font-weight: var(--weight-semibold);
+}
+
+.trade-panel__confirm-notice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  font-size: var(--size-caption);
+  color: var(--text-900);
+  background: rgba(168, 255, 62, 0.1);
+  padding: var(--space-3);
+  border-radius: var(--radius-sm);
+  line-height: var(--leading-body);
+}
+
+.trade-panel__confirm-notice svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ==========================================================================
+   Portfolio Card
+   ========================================================================== */
+
+.portfolio-card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  padding: var(--space-5);
+  border: 1px solid var(--border-subtle);
+}
+
+.portfolio-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-4);
+}
+
+.portfolio-card__title {
+  font-weight: var(--weight-semibold);
+  font-size: var(--size-body-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.portfolio-card__title svg {
+  width: 20px;
+  height: 20px;
+}
+
+.portfolio-card__summary {
+  background: var(--bg-100);
+  border-radius: var(--radius-sm);
+  padding: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.portfolio-card__summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.portfolio-card__summary-label {
+  font-size: var(--size-caption);
+  color: var(--text-900);
+}
+
+.portfolio-card__summary-value {
+  font-size: var(--size-body);
+  font-weight: var(--weight-semibold);
+  color: var(--text-900);
+}
+
+.portfolio-card__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.portfolio-card__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3);
+  background: var(--bg-100);
+  border-radius: var(--radius-sm);
+  transition: background var(--duration-fast);
+}
+
+.portfolio-card__item:hover {
+  background: var(--bg-200, #e5e7eb);
+}
+
+.portfolio-card__item--holden {
+  border-left: 3px solid var(--accent-lime);
+}
+
+.portfolio-card__asset-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.portfolio-card__asset-icon {
+  font-size: 12px;
+  color: var(--muted-gray);
+}
+
+.portfolio-card__asset-name {
+  font-weight: var(--weight-medium);
+  font-size: var(--size-caption);
+  color: var(--text-900);
+}
+
+.portfolio-card__asset-balance {
+  font-size: var(--size-caption);
+  font-weight: var(--weight-medium);
+  color: var(--text-900);
+}
+
+.portfolio-card__empty {
+  text-align: center;
+  padding: var(--space-5);
+  color: var(--muted-gray);
+}
+
+.portfolio-card__empty-icon {
+  font-size: 32px;
+  margin-bottom: var(--space-3);
+}
+
+.portfolio-card__empty-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .dashboard__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dashboard__sidebar:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard__grid {
+    grid-template-columns: 1fr;
+  }
+}

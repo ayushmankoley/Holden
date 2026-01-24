@@ -8,7 +8,7 @@ import Footer from "./components/layout/Footer";
 // Pages
 import Home from "./pages/Home";
 import AssetDetail from "./pages/assets/AssetDetail";
-import Account from "./pages/Account";
+import Dashboard from "./pages/Dashboard/Dashboard";
 import Transactions from "./pages/Transactions";
 import Admin, { AdminOverview } from "./pages/admin/Admin";
 import AdminKyc from "./pages/admin/AdminKyc";
@@ -38,8 +38,8 @@ function App() {
         {/* Assets */}
         <Route path="/assets/:assetCode" element={<AssetDetail />} />
 
-        {/* User Account */}
-        <Route path="/account" element={<Account />} />
+        {/* User Dashboard */}
+        <Route path="/account" element={<Dashboard />} />
 
         {/* Transactions */}
         <Route path="/transactions" element={<Transactions />} />

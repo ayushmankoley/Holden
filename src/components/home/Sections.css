@@ -120,9 +120,17 @@
 .about-section__update-card {
   background: var(--accent-lime);
   border-radius: var(--radius-card);
-  padding: var(--space-5);
-  max-width: 320px;
+  padding: var(--space-6);
+  max-width: 420px;
+  /* Increased from 320px */
   width: 100%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  transform: rotate(-2deg);
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.about-section__update-card:hover {
+  transform: rotate(0deg) scale(1.02);
 }
 
 .about-section__update-badge {
@@ -168,12 +176,11 @@
 }
 
 .about-section__note {
-  position: absolute;
-  bottom: var(--space-6);
-  right: var(--space-6);
+  margin-top: var(--space-6);
   font-style: italic;
   color: var(--muted-gray);
   font-size: var(--size-caption);
+  opacity: 0.8;
 }
 
 /* Responsive */
