@@ -26,6 +26,10 @@ default = true
 id = "CA2XEEBMTCFKCCDYPRULQKYI56IGCRXWHVGZ4RDIK2KDDGQXKZKAX7N4"
 client = true
 
+[staging.contracts.kyc_registry]
+id = "CA7BJCH7EQ74WJY3TY7XDMJYU2QJPMVMZUOEVJ54IJ3C6GMMZZM43DFU"
+client = true
+
 
 ### Production environment configuration (MAINNET – future)
 [production.network]
