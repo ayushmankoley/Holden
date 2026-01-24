@@ -1,34 +1,29 @@
-import { Button, Icon, Layout } from "@stellar/design-system";
+import { Layout } from "@stellar/design-system";
 import "./App.module.css";
-import ConnectAccount from "./components/ConnectAccount.tsx";
+import ConnectAccount from "./components/ConnectAccount";
 import { Routes, Route, Outlet, NavLink } from "react-router-dom";
 import Home from "./pages/Home";
-import Debugger from "./pages/Debugger.tsx";
+import Debugger from "./pages/Debugger";
 
 const AppLayout: React.FC = () => (
   <main>
     <Layout.Header
-      projectId="My App"
-      projectTitle="My App"
+      projectId="Holden"
+      projectTitle="Holden"
       contentRight={
         <>
           <nav>
-            <NavLink
-              to="/debug"
-              style={{
-                textDecoration: "none",
-              }}
-            >
+            <NavLink to="/debug" style={{ textDecoration: "none" }}>
               {({ isActive }) => (
-                <Button
-                  variant="tertiary"
-                  size="md"
-                  onClick={() => (window.location.href = "/debug")}
+                <button
+                  style={{
+                    opacity: isActive ? 0.5 : 1,
+                    cursor: isActive ? "default" : "pointer",
+                  }}
                   disabled={isActive}
                 >
-                  <Icon.Code02 size="md" />
                   Debugger
-                </Button>
+                </button>
               )}
             </NavLink>
           </nav>
@@ -36,19 +31,14 @@ const AppLayout: React.FC = () => (
         </>
       }
     />
-    <Outlet />
+
+    {/* MAIN CONTENT */}
+    <Layout.Content>
+      <Outlet />
+    </Layout.Content>
+
     <Layout.Footer>
-      <span>
-        © {new Date().getFullYear()} My App. Licensed under the{" "}
-        <a
-          href="http://www.apache.org/licenses/LICENSE-2.0"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Apache License, Version 2.0
-        </a>
-        .
-      </span>
+      <span>© {new Date().getFullYear()} Holden. All rights reserved.</span>
     </Layout.Footer>
   </main>
 );

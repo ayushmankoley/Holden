@@ -1,10 +1,8 @@
-import React from "react";
 import { stellarNetwork } from "../contracts/util";
-import FundAccountButton from "./FundAccountButton";
 import { WalletButton } from "./WalletButton";
 import NetworkPill from "./NetworkPill";
 
-const ConnectAccount: React.FC = () => {
+const ConnectAccount = () => {
   return (
     <div
       style={{
@@ -12,12 +10,10 @@ const ConnectAccount: React.FC = () => {
         flexDirection: "row",
         alignItems: "center",
         gap: "10px",
-        verticalAlign: "middle",
       }}
     >
+      <NetworkPill network={stellarNetwork} />
       <WalletButton />
-      {stellarNetwork !== "PUBLIC" && <FundAccountButton />}
-      <NetworkPill />
     </div>
   );
 };
