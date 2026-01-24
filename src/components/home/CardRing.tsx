@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import AssetCard from "./AssetCard";
 import "./CardRing.css";
 
-// 12 sample assets for display
+// 18 sample assets for display (more cards = less gap between them)
 const SAMPLE_ASSETS = [
   { assetCode: "TSLAH", name: "Tesla Holdings", imageUrl: "" },
   { assetCode: "APPLH", name: "Apple Holdings", imageUrl: "" },
@@ -16,36 +16,35 @@ const SAMPLE_ASSETS = [
   { assetCode: "DISNH", name: "Disney Holdings", imageUrl: "" },
   { assetCode: "ADBEH", name: "Adobe Holdings", imageUrl: "" },
   { assetCode: "INTCH", name: "Intel Holdings", imageUrl: "" },
+  { assetCode: "AMDH", name: "AMD Holdings", imageUrl: "" },
+  { assetCode: "COINH", name: "Coinbase Holdings", imageUrl: "" },
+  { assetCode: "UBERH", name: "Uber Holdings", imageUrl: "" },
 ];
 
 const CardRing: React.FC = () => {
   const [radius, setRadius] = useState(550);
   const [cardScale, setCardScale] = useState(0.8);
 
-  // Calculate radius and scale based on viewport
+  // Calculate radius to span full viewport width (left to right corners)
   useEffect(() => {
     const calculateDimensions = () => {
       const vw = window.innerWidth;
 
-      // Responsive radius - much larger now
-      let newRadius: number;
-      let newScale: number;
+      // Radius = half viewport width + extra for bigger ring
+      const newRadius = vw / 2 + 250;
 
+      // Scale cards - MUCH BIGGER sizes
+      let newScale: number;
       if (vw >= 1400) {
-        newRadius = 700;
-        newScale = 0.85;
+        newScale = 1.0;
       } else if (vw >= 1200) {
-        newRadius = 600;
-        newScale = 0.75;
+        newScale = 0.95;
       } else if (vw >= 992) {
-        newRadius = 500;
-        newScale = 0.65;
+        newScale = 0.85;
       } else if (vw >= 768) {
-        newRadius = 400;
-        newScale = 0.55;
+        newScale = 0.75;
       } else {
-        newRadius = 300;
-        newScale = 0.5;
+        newScale = 0.65;
       }
 
       setRadius(newRadius);
@@ -62,7 +61,7 @@ const CardRing: React.FC = () => {
 
   return (
     <>
-      {/* Desktop: Rotating ring - flower pattern (cards point outward) */}
+      {/* Desktop: Rotating ring - positioned at bottom of wrapper */}
       <div
         className="card-ring"
         aria-hidden="true"

@@ -1,11 +1,18 @@
 /* ==========================================================================
-   Card Ring Component Styles
+   Card Ring Component Styles - Continuous rotation
+   
+   TO MOVE RING UP/DOWN: Change the 'bottom' value below
+   - Increase bottom value (e.g., bottom: 0) = Ring moves UP (more visible)
+   - Decrease bottom value (e.g., bottom: -300px) = Ring moves DOWN (less visible)
    ========================================================================== */
 
 .card-ring {
   position: absolute;
   left: 50%;
-  top: 50%;
+  /* Horizontally centered */
+  bottom: -765px;
+  /* Ring center below - adjust this to move ring up/down */
+  transform: translateX(-50%);
   width: 0;
   height: 0;
   z-index: 10;
@@ -19,7 +26,7 @@
   height: 0;
   transform-origin: center center;
   animation: ring-spin linear infinite;
-  animation-duration: var(--ring-duration);
+  animation-duration: var(--ring-duration, 120s);
   will-change: transform;
 }
 
@@ -51,51 +58,69 @@
 }
 
 /* ==========================================================================
-   Responsive Ring Adjustments
+   Responsive Ring Adjustments (supports 60% to 125% zoom)
    ========================================================================== */
 
-@media (max-width: 1199px) {
+/* Extra Large Desktop (1800px+) - 60-80% zoom on standard monitors */
+@media (min-width: 1800px) {
   .card-ring {
-    --ring-duration: 100s;
-    /* Slower on smaller screens */
+    --ring-duration: 140s;
+    bottom: -850px;
   }
 }
 
-@media (max-width: 767px) {
-  /* On mobile, hide ring and show horizontal scroll instead */
+/* Large Desktop (1400px - 1799px) - 80-100% zoom */
+@media (max-width: 1799px) and (min-width: 1400px) {
   .card-ring {
-    display: none;
+    --ring-duration: 130s;
+    bottom: -765px;
+  }
+}
+
+/* Desktop (1200px - 1399px) - 100-110% zoom */
+@media (max-width: 1399px) and (min-width: 1200px) {
+  .card-ring {
+    --ring-duration: 120s;
+    bottom: -720px;
+  }
+}
+
+/* Small Desktop (1024px - 1199px) - 110-125% zoom */
+@media (max-width: 1199px) and (min-width: 1024px) {
+  .card-ring {
+    --ring-duration: 115s;
+    bottom: -650px;
+  }
+}
+
+/* Tablet (992px - 1023px) */
+@media (max-width: 1023px) and (min-width: 992px) {
+  .card-ring {
+    --ring-duration: 110s;
+    bottom: -580px;
+  }
+}
+
+/* Small Tablet (768px - 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+  .card-ring {
+    --ring-duration: 100s;
+    bottom: -450px;
+  }
+}
+
+/* Mobile (< 768px) - Ring moved up for better visibility */
+@media (max-width: 767px) {
+  .card-ring {
+    --ring-duration: 90s;
+    bottom: -180px;
   }
 }
 
 /* ==========================================================================
-   Mobile Cards Row (fallback for mobile)
+   Mobile Cards Row - Hidden since ring is shown on all devices
    ========================================================================== */
 
 .cards-row {
   display: none;
-  gap: var(--space-4);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: var(--space-6) var(--space-4);
-  margin: 0 calc(-1 * var(--space-4));
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-}
-
-.cards-row::-webkit-scrollbar {
-  display: none;
-}
-
-.cards-row .asset-card {
-  scroll-snap-align: center;
-  flex-shrink: 0;
-  min-width: 75%;
-  max-width: 280px;
-}
-
-@media (max-width: 767px) {
-  .cards-row {
-    display: flex;
-  }
 }

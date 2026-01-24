@@ -4,21 +4,23 @@
 
 .hero {
   position: relative;
+  height: 100vh;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: calc(var(--space-2) + 60px) var(--space-6) 0;
   overflow: hidden;
 }
 
+/* Top content area - takes 70% of viewport */
 .hero__content {
   position: relative;
   z-index: 50;
   text-align: center;
   max-width: 1200px;
-  /* Increased to allow horizontal title */
   width: 100%;
+  margin: 0 auto;
+  padding: calc(var(--space-2) + 80px) var(--space-6) var(--space-4);
+  flex-shrink: 0;
 }
 
 .hero__title {
@@ -30,12 +32,10 @@
   color: var(--text-900);
   margin-bottom: var(--space-4);
   white-space: nowrap;
-  /* Force single line */
 }
 
 .hero__title-line {
   display: inline;
-  /* Horizontal layout */
 }
 
 .hero__glyph {
@@ -96,26 +96,36 @@
   background: var(--muted-gray);
 }
 
-/* Ring wrapper area - positioned well below hero content */
+/* ==========================================================================
+   Card Ring Wrapper - Bottom half of viewport
+   ========================================================================== */
+
 .hero__ring-wrapper {
-  position: relative;
-  width: 100%;
-  height: 800px;
-  /* Tall to accommodate large ring */
+  position: absolute;
+  bottom: 50px;
+  /* Space for marquee */
+  left: 0;
+  right: 0;
+  height: 45vh;
+  /* Bottom area of screen */
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
-  margin-top: 150px;
-  /* Push ring down significantly */
+  z-index: 20;
+  overflow: hidden;
+  /* Clips the ring - only top arc visible */
 }
 
-/* Marquee at bottom of hero - above cards */
+/* ==========================================================================
+   Marquee - Fixed at bottom of first screen
+   ========================================================================== */
+
 .hero__marquee {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 30;
+  z-index: 100;
 }
 
 /* ==========================================================================
@@ -124,17 +134,19 @@
 
 /* Large Desktop (1400px+) */
 @media (min-width: 1400px) {
+  .hero__content {
+    padding-top: calc(var(--space-2) + 100px);
+  }
+
   .hero__ring-wrapper {
-    height: 900px;
-    margin-top: 200px;
+    height: 48vh;
   }
 }
 
 /* Desktop (1200px - 1399px) */
 @media (max-width: 1399px) and (min-width: 1200px) {
   .hero__ring-wrapper {
-    height: 750px;
-    margin-top: 150px;
+    height: 45vh;
   }
 }
 
@@ -143,36 +155,69 @@
   .hero__title {
     font-size: clamp(32px, 5vw, 60px);
     white-space: normal;
-    /* Allow wrap on smaller screens */
   }
 
   .hero__ring-wrapper {
-    height: 600px;
-    margin-top: 100px;
+    height: 42vh;
   }
 }
 
 /* Mobile (< 768px) */
 @media (max-width: 767px) {
   .hero {
-    min-height: auto;
-    padding-top: calc(var(--space-4) + 60px);
-    padding-bottom: var(--space-6);
+    height: 100vh;
+    min-height: 100vh;
+  }
+
+  .hero__content {
+    padding-top: calc(var(--space-4) + 70px);
+    padding-bottom: var(--space-2);
   }
 
   .hero__title {
     font-size: clamp(28px, 8vw, 48px);
     white-space: normal;
-    /* Allow wrap on mobile */
-  }
-
-  .hero__ring-wrapper {
-    height: auto;
-    min-height: 350px;
-    margin-top: var(--space-6);
   }
 
   .hero__subtitle {
     font-size: 16px;
+  }
+
+  .hero__ring-wrapper {
+    height: 60vh;
+    /* 60% of screen */
+    bottom: 35px;
+    /* Just above marquee */
+    padding: 0;
+  }
+
+  .hero__marquee {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+/* Small Mobile (< 480px) */
+@media (max-width: 479px) {
+  .hero__content {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  .hero__ring-wrapper {
+    height: 60vh;
+    /* 60% of screen */
+    bottom: 30px;
+  }
+
+  .hero__chips {
+    gap: var(--space-1);
+  }
+
+  .hero__chip {
+    padding: var(--space-1) var(--space-3);
+    font-size: 12px;
   }
 }
