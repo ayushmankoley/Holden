@@ -46,19 +46,21 @@ const AssetCard: React.FC<AssetCardProps> = ({
       onKeyDown={handleKeyDown}
     >
       <div className="asset-card__preview">
-        {imageUrl ? (
-          <img
-            src={imageUrl}
-            alt={`${name} preview`}
-            className="asset-card__preview-image"
-            loading="lazy"
-          />
-        ) : (
-          <div className="asset-card__preview-placeholder">
-            <div className="asset-card__preview-icon">📈</div>
-            <span className="asset-card__preview-ticker">{assetCode}</span>
+        <div className="asset-card__content">
+          <div className="asset-card__icon-wrapper">
+            {imageUrl ? (
+              <img
+                src={imageUrl}
+                alt={`${name} icon`}
+                className="asset-card__icon-image"
+                loading="lazy"
+              />
+            ) : (
+              <span className="asset-card__icon-fallback">📈</span>
+            )}
           </div>
-        )}
+          <span className="asset-card__ticker">${assetCode}</span>
+        </div>
         {isActive && <span className="asset-card__badge">Active</span>}
       </div>
 

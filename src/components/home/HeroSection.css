@@ -184,16 +184,17 @@
   }
 
   .hero__ring-wrapper {
-    height: 60vh;
-    /* 60% of screen */
-    bottom: 35px;
-    /* Just above marquee */
+    height: 55vh;
+    /* 55% of screen */
+    bottom: 60px;
+    /* Higher up */
     padding: 0;
   }
 
   .hero__marquee {
     position: fixed;
-    bottom: 0;
+    bottom: 200px;
+    /* Moved up more */
     left: 0;
     right: 0;
   }

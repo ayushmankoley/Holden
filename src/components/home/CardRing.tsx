@@ -2,23 +2,98 @@ import { useEffect, useState } from "react";
 import AssetCard from "./AssetCard";
 import "./CardRing.css";
 
-// 18 sample assets for display (more cards = less gap between them)
+// 12 sample assets for display with IPFS images
 const SAMPLE_ASSETS = [
-  { assetCode: "TSLAH", name: "Tesla Holdings", imageUrl: "" },
-  { assetCode: "APPLH", name: "Apple Holdings", imageUrl: "" },
-  { assetCode: "GOOGH", name: "Google Holdings", imageUrl: "" },
-  { assetCode: "AMZNH", name: "Amazon Holdings", imageUrl: "" },
-  { assetCode: "MSFTH", name: "Microsoft Holdings", imageUrl: "" },
-  { assetCode: "NVDAH", name: "Nvidia Holdings", imageUrl: "" },
-  { assetCode: "METAH", name: "Meta Holdings", imageUrl: "" },
-  { assetCode: "NFLXH", name: "Netflix Holdings", imageUrl: "" },
-  { assetCode: "SPOTF", name: "Spotify Holdings", imageUrl: "" },
-  { assetCode: "DISNH", name: "Disney Holdings", imageUrl: "" },
-  { assetCode: "ADBEH", name: "Adobe Holdings", imageUrl: "" },
-  { assetCode: "INTCH", name: "Intel Holdings", imageUrl: "" },
-  { assetCode: "AMDH", name: "AMD Holdings", imageUrl: "" },
-  { assetCode: "COINH", name: "Coinbase Holdings", imageUrl: "" },
-  { assetCode: "UBERH", name: "Uber Holdings", imageUrl: "" },
+  {
+    assetCode: "TSLAH",
+    name: "Tesla Holdings",
+    imageUrl:
+      "https://ipfs.io/ipfs/bafkreidhtrfpnksjjw364fmzniudflfjhy2zauglkktfwkolyityzhruma",
+  },
+  {
+    assetCode: "AAPLH",
+    name: "Apple Holdings",
+    imageUrl:
+      "https://ipfs.io/ipfs/bafkreiaofe53sqvt3zu2t3zevid467sjvq5d4r7lr5y2odyfsnr44ubjm4",
+  },
+  {
+    assetCode: "METAH",
+    name: "Meta Holdings",
+    imageUrl:
+      "https://ipfs.io/ipfs/bafkreihlop4ueosv4edaznxz4ydwznj2vn52mdsnukmiielwgk2qugsa5e",
+  },
+  {
+    assetCode: "AMZNH",
+    name: "Amazon Holdings",
+    imageUrl:
+      "https://ipfs.io/ipfs/bafkreiajud4sl2piim47ojfwsxkaxgik5sfgikspkyc4i7h5fzuukq6jgi",
+  },
+  {
+    assetCode: "NVDAH",
+    name: "Nvidia Holdings",
+    imageUrl:
+      "https://ipfs.io/ipfs/bafkreidmobhs3hgt5xx5hzqxkpuw5vo4yyfxdzsk354nung3xq3lcr4gny",
+  },
+  {
+    assetCode: "SONYH",
+    name: "Sony Holdings",
+    imageUrl:
+      "https://ipfs.io/ipfs/bafkreihfiehzmgppufkdlwzerwdfz46yolpkvv4vpdjznmlwmp2hdif32m",
+  },
+  {
+    assetCode: "TCSH",
+    name: "TCS Holdings",
+    imageUrl:
+      "https://ipfs.io/ipfs/bafkreicds2sxkrmx7unlpmrrhdbuyy6j6kfhpsmdxhvvajzzffzjgc2inm",
+  },
+  {
+    assetCode: "RELIANCEH",
+    name: "Reliance Holdings",
+    imageUrl:
+      "https://ipfs.io/ipfs/bafkreiaxjg4sia4e4j3vm2z6sbohuuuelm2ppga6hhjaabc4eyipjcwcri",
+  },
+  {
+    assetCode: "INFYH",
+    name: "Infosys Holdings",
+    imageUrl:
+      "https://ipfs.io/ipfs/bafkreiddwklqrte622qmmqwapvfmevsfsjugy53hd5i5vt56subfsd7mpm",
+  },
+  {
+    assetCode: "BAJFINANCEH",
+    name: "Bajaj Finance Holdings",
+    imageUrl:
+      "https://ipfs.io/ipfs/bafkreidleyxfmrtn3dmpu4imw6zcrsrjkhz6hq6zwq7wsw5iwlbamad7we",
+  },
+  {
+    assetCode: "XAUUSDH",
+    name: "Gold Holdings",
+    imageUrl:
+      "https://ipfs.io/ipfs/bafkreig4ycoqllxmm35jtzso2zof3d73te3qxoalfvxumextjmef5qmfeq",
+  },
+  {
+    assetCode: "XAGUSDH",
+    name: "Silver Holdings",
+    imageUrl:
+      "https://ipfs.io/ipfs/bafkreigphz32byw6zhd7bfalknbedhi77l7tp4oiav3nuyc2cfamiubj3q",
+  },
+  {
+    assetCode: "MCDH",
+    name: "McDonald's Corp Holdings",
+    imageUrl:
+      "https://ipfs.io/ipfs/bafkreicezq6byaavlptynb7lj6dyco5bc6kg7lrzui5h7xruelcwqr5teq",
+  },
+  {
+    assetCode: "NKEH",
+    name: "Nike Holdings",
+    imageUrl:
+      "https://ipfs.io/ipfs/bafkreia2i4cwz5rsja6zf6a55shlc3t3wavoo3wcddvsejkbuhemazmcje",
+  },
+  {
+    assetCode: "SBINH",
+    name: "SBI Holdings",
+    imageUrl:
+      "https://ipfs.io/ipfs/bafkreibu55yw7pblhnwpxw5akc54tgygjepm2n3qpse34farn53b25qroq",
+  },
 ];
 
 const CardRing: React.FC = () => {
@@ -31,20 +106,39 @@ const CardRing: React.FC = () => {
       const vw = window.innerWidth;
 
       // Radius = half viewport width + extra for bigger ring
-      const newRadius = vw / 2 + 250;
-
-      // Scale cards - MUCH BIGGER sizes
-      let newScale: number;
-      if (vw >= 1400) {
-        newScale = 1.0;
+      // Adjusted for better 125% zoom support
+      let radiusOffset: number;
+      if (vw >= 1600) {
+        radiusOffset = 280;
+      } else if (vw >= 1400) {
+        radiusOffset = 250;
       } else if (vw >= 1200) {
-        newScale = 0.95;
-      } else if (vw >= 992) {
-        newScale = 0.85;
-      } else if (vw >= 768) {
-        newScale = 0.75;
+        radiusOffset = 200;
+      } else if (vw >= 1024) {
+        radiusOffset = 150;
+      } else if (vw >= 900) {
+        radiusOffset = 100;
       } else {
+        radiusOffset = 80;
+      }
+      const newRadius = vw / 2 + radiusOffset;
+
+      // Scale cards - granular sizing for all zoom levels including 125%
+      let newScale: number;
+      if (vw >= 1600) {
+        newScale = 1.0;
+      } else if (vw >= 1400) {
+        newScale = 0.95;
+      } else if (vw >= 1200) {
+        newScale = 0.88;
+      } else if (vw >= 1024) {
+        newScale = 0.78;
+      } else if (vw >= 900) {
+        newScale = 0.7;
+      } else if (vw >= 768) {
         newScale = 0.65;
+      } else {
+        newScale = 0.55; // Mobile - smaller cards
       }
 
       setRadius(newRadius);

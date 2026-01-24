@@ -24,7 +24,8 @@
   top: 0;
   width: 0;
   height: 0;
-  transform-origin: center center;
+  transform-origin: 0 0;
+  /* Fixed rotation center at the ring's center point */
   animation: ring-spin linear infinite;
   animation-duration: var(--ring-duration, 120s);
   will-change: transform;
@@ -58,54 +59,70 @@
 }
 
 /* ==========================================================================
-   Responsive Ring Adjustments (supports 60% to 125% zoom)
+   Responsive Ring Adjustments (supports 60% to 150% zoom)
    ========================================================================== */
 
-/* Extra Large Desktop (1800px+) - 60-80% zoom on standard monitors */
-@media (min-width: 1800px) {
+/* Ultra Wide / Very Large Desktop (2000px+) - 50-67% zoom */
+@media (min-width: 2000px) {
+  .card-ring {
+    --ring-duration: 150s;
+    bottom: -900px;
+  }
+}
+
+/* Extra Large Desktop (1800px - 1999px) - 67-80% zoom */
+@media (max-width: 1999px) and (min-width: 1800px) {
   .card-ring {
     --ring-duration: 140s;
     bottom: -850px;
   }
 }
 
-/* Large Desktop (1400px - 1799px) - 80-100% zoom */
-@media (max-width: 1799px) and (min-width: 1400px) {
+/* Large Desktop (1600px - 1799px) - 80-90% zoom */
+@media (max-width: 1799px) and (min-width: 1600px) {
   .card-ring {
-    --ring-duration: 130s;
-    bottom: -765px;
+    --ring-duration: 135s;
+    bottom: -800px;
   }
 }
 
-/* Desktop (1200px - 1399px) - 100-110% zoom */
+/* Desktop (1400px - 1599px) - 90-100% zoom */
+@media (max-width: 1599px) and (min-width: 1400px) {
+  .card-ring {
+    --ring-duration: 130s;
+    bottom: -750px;
+  }
+}
+
+/* Small Desktop (1200px - 1399px) - 100-115% zoom */
 @media (max-width: 1399px) and (min-width: 1200px) {
   .card-ring {
     --ring-duration: 120s;
-    bottom: -720px;
+    bottom: -680px;
   }
 }
 
-/* Small Desktop (1024px - 1199px) - 110-125% zoom */
+/* 125% Zoom Range (1024px - 1199px) - Most common 125% zoom viewport */
 @media (max-width: 1199px) and (min-width: 1024px) {
   .card-ring {
     --ring-duration: 115s;
-    bottom: -650px;
-  }
-}
-
-/* Tablet (992px - 1023px) */
-@media (max-width: 1023px) and (min-width: 992px) {
-  .card-ring {
-    --ring-duration: 110s;
     bottom: -580px;
   }
 }
 
-/* Small Tablet (768px - 991px) */
-@media (max-width: 991px) and (min-width: 768px) {
+/* High Zoom (900px - 1023px) - 125-150% zoom */
+@media (max-width: 1023px) and (min-width: 900px) {
+  .card-ring {
+    --ring-duration: 110s;
+    bottom: -500px;
+  }
+}
+
+/* Tablet / Extra High Zoom (768px - 899px) */
+@media (max-width: 899px) and (min-width: 768px) {
   .card-ring {
     --ring-duration: 100s;
-    bottom: -450px;
+    bottom: -420px;
   }
 }
 
@@ -113,7 +130,7 @@
 @media (max-width: 767px) {
   .card-ring {
     --ring-duration: 90s;
-    bottom: -180px;
+    bottom: -50px;
   }
 }
 
