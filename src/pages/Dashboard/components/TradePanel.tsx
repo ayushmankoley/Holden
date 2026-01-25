@@ -14,6 +14,7 @@ interface TradePanelProps {
 
 // Available assets for trading with their issuer and exchange info
 const AVAILABLE_ASSETS = [
+  // US Stocks
   {
     code: "TSLAH",
     name: "Tesla Holdings",
@@ -21,7 +22,85 @@ const AVAILABLE_ASSETS = [
     exchange: "NASDAQ",
     stockSymbol: "TSLA",
   },
-  // Add more as they get registered
+  {
+    code: "AAPLH",
+    name: "Apple Holdings",
+    issuer: "GCDPEKYIWTH4DWGYPALZ7RLGCP32C6RZ2BZAF4EJEU7BGCGOAEMEIZZ4",
+    exchange: "NASDAQ",
+    stockSymbol: "AAPL",
+  },
+  {
+    code: "METAH",
+    name: "Meta Holdings",
+    issuer: "GCDPEKYIWTH4DWGYPALZ7RLGCP32C6RZ2BZAF4EJEU7BGCGOAEMEIZZ4",
+    exchange: "NASDAQ",
+    stockSymbol: "META",
+  },
+  {
+    code: "AMZNH",
+    name: "Amazon Holdings",
+    issuer: "GCDPEKYIWTH4DWGYPALZ7RLGCP32C6RZ2BZAF4EJEU7BGCGOAEMEIZZ4",
+    exchange: "NASDAQ",
+    stockSymbol: "AMZN",
+  },
+  {
+    code: "NVDAH",
+    name: "Nvidia Holdings",
+    issuer: "GCDPEKYIWTH4DWGYPALZ7RLGCP32C6RZ2BZAF4EJEU7BGCGOAEMEIZZ4",
+    exchange: "NASDAQ",
+    stockSymbol: "NVDA",
+  },
+  {
+    code: "SONYH",
+    name: "Sony Holdings",
+    issuer: "GCDPEKYIWTH4DWGYPALZ7RLGCP32C6RZ2BZAF4EJEU7BGCGOAEMEIZZ4",
+    exchange: "NYSE",
+    stockSymbol: "SONY",
+  },
+  // Indian Stocks
+  {
+    code: "TCSH",
+    name: "TCS Holdings",
+    issuer: "GCDPEKYIWTH4DWGYPALZ7RLGCP32C6RZ2BZAF4EJEU7BGCGOAEMEIZZ4",
+    exchange: "NSE",
+    stockSymbol: "TCS",
+  },
+  {
+    code: "RELIANCEH",
+    name: "Reliance Holdings",
+    issuer: "GCDPEKYIWTH4DWGYPALZ7RLGCP32C6RZ2BZAF4EJEU7BGCGOAEMEIZZ4",
+    exchange: "NSE",
+    stockSymbol: "RELIANCE",
+  },
+  {
+    code: "INFYH",
+    name: "Infosys Holdings",
+    issuer: "GCDPEKYIWTH4DWGYPALZ7RLGCP32C6RZ2BZAF4EJEU7BGCGOAEMEIZZ4",
+    exchange: "NSE",
+    stockSymbol: "INFY",
+  },
+  {
+    code: "BAJFINANCEH",
+    name: "Bajaj Finance Holdings",
+    issuer: "GCDPEKYIWTH4DWGYPALZ7RLGCP32C6RZ2BZAF4EJEU7BGCGOAEMEIZZ4",
+    exchange: "NSE",
+    stockSymbol: "BAJFINANCE",
+  },
+  // Commodities
+  {
+    code: "XAUUSDH",
+    name: "Gold Holdings",
+    issuer: "GCDPEKYIWTH4DWGYPALZ7RLGCP32C6RZ2BZAF4EJEU7BGCGOAEMEIZZ4",
+    exchange: "COMMODITY",
+    stockSymbol: "XAU/USD",
+  },
+  {
+    code: "XAGUSDH",
+    name: "Silver Holdings",
+    issuer: "GCDPEKYIWTH4DWGYPALZ7RLGCP32C6RZ2BZAF4EJEU7BGCGOAEMEIZZ4",
+    exchange: "COMMODITY",
+    stockSymbol: "XAG/USD",
+  },
 ];
 
 // Exchange types and their required fields
@@ -109,6 +188,26 @@ const EXCHANGE_FIELDS: Record<
         name: "panNumber",
         label: "PAN Number",
         placeholder: "Your PAN card number",
+      },
+    ],
+  },
+  COMMODITY: {
+    label: "Bank/Vault Account",
+    fields: [
+      {
+        name: "bankName",
+        label: "Bank/Vault Name",
+        placeholder: "e.g., LBMA Vault, Swiss Bank",
+      },
+      {
+        name: "accountNumber",
+        label: "Account/Reference Number",
+        placeholder: "Your account or vault reference",
+      },
+      {
+        name: "swiftCode",
+        label: "SWIFT Code (if applicable)",
+        placeholder: "Bank SWIFT/BIC code",
       },
     ],
   },
@@ -351,11 +450,14 @@ const TradePanel: React.FC<TradePanelProps> = ({
     try {
       if (activeTab === "buy") {
         // Buy tokens - amount in stroops (1 token = 10^7 stroops)
-        const tx = await issuanceController.buy({
-          buyer: address,
-          asset_code: selectedAsset,
-          amount: BigInt(Math.floor(parsedAmount * 1e7)), // Convert to stroops
-        });
+        const tx = await issuanceController.buy(
+          {
+            buyer: address,
+            asset_code: selectedAsset,
+            amount: BigInt(Math.floor(parsedAmount * 1e7)), // Convert to stroops
+          },
+          { publicKey: address }, // Required for transaction construction
+        );
 
         // Sign and submit
         await tx.signAndSend({ signTransaction });

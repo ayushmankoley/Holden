@@ -6,7 +6,20 @@ interface PortfolioCardProps {
 }
 
 // Known Holden assets - filter to show only these
-const HOLDEN_ASSETS = ["TSLAH", "AAPLH", "METAH", "AMZNH", "NVDAH"];
+const HOLDEN_ASSETS = [
+  "TSLAH",
+  "AAPLH",
+  "METAH",
+  "AMZNH",
+  "NVDAH",
+  "SONYH",
+  "TCSH",
+  "RELIANCEH",
+  "INFYH",
+  "BAJFINANCEH",
+  "XAUUSDH",
+  "XAGUSDH",
+];
 
 // Format balance for display
 const formatBalance = (balance: string): string => {
