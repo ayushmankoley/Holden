@@ -55,6 +55,16 @@ const SAMPLE_ASSETS = [
     imageUrl: "/bajaj.jpg",
   },
   {
+    assetCode: "AMZNH",
+    name: "Amazon Holdings",
+    imageUrl: "/amazon.png",
+  },
+  {
+    assetCode: "AAPLH",
+    name: "Apple Holdings",
+    imageUrl: "/apple.jpg",
+  },
+  {
     assetCode: "XAUUSDH",
     name: "Gold Holdings",
     imageUrl: "/gold.png",
