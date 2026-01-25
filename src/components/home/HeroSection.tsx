@@ -19,7 +19,7 @@ const HeroSection: React.FC = () => {
           <span className="hero__title-line">
             <span className="hero__glyph" aria-hidden="true">
               ✶
-            </span>{" "}
+            </span>{""}
             Matters
           </span>
         </h1>
