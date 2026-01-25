@@ -70,6 +70,11 @@ const SAMPLE_ASSETS = [
     imageUrl: "/meta.png",
   },
   {
+    assetCode: "SONYH",
+    name: "Sony Holdings",
+    imageUrl: "/sony.png",
+  },
+  {
     assetCode: "XAUUSDH",
     name: "Gold Holdings",
     imageUrl: "/gold.png",
