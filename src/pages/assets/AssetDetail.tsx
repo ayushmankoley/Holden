@@ -146,7 +146,7 @@ const AssetDetail: React.FC = () => {
         <div className="stats-row">
           <div className="stat-card">
             <div className="stat-card__value">
-              {isLoading ? "..." : `$${price}`}
+              {isLoading ? "..." : `${price}`}
             </div>
             <div className="stat-card__label">Current Price (USD)</div>
           </div>

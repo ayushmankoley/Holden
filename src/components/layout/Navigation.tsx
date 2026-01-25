@@ -129,8 +129,11 @@ const Navigation: React.FC = () => {
         >
           <div className="nav__dropdown-grid">
             {/* Navigation Column */}
+            {/* Navigation Column */}
             <div className="nav__dropdown-column">
-              <span className="nav__dropdown-label">Navigation</span>
+              <span className="nav__dropdown-label" style={{ color: "white" }}>
+                Navigation
+              </span>
               <NavLink
                 to="/"
                 className={({ isActive }) =>
@@ -151,49 +154,53 @@ const Navigation: React.FC = () => {
               >
                 Account
               </NavLink>
-              <NavLink
-                to="/transactions"
-                className={({ isActive }) =>
-                  `nav__dropdown-link ${isActive ? "active" : ""}`
-                }
-                onClick={() => setMenuOpen(false)}
-                role="menuitem"
-              >
-                Transactions
-              </NavLink>
             </div>
 
             {/* Explore Column */}
             <div className="nav__dropdown-column">
-              <span className="nav__dropdown-label">Explore</span>
+              <span className="nav__dropdown-label" style={{ color: "white" }}>
+                Explore
+              </span>
               <NavLink
-                to="/admin"
-                className={({ isActive }) =>
-                  `nav__dropdown-link ${isActive ? "active" : ""}`
-                }
+                to="/assets/TSLAH"
+                className="nav__dropdown-link"
                 onClick={() => setMenuOpen(false)}
                 role="menuitem"
               >
-                Admin Dashboard
+                $TSLAH
               </NavLink>
-              <a
-                href="https://stellar.org"
-                target="_blank"
-                rel="noopener noreferrer"
+              <NavLink
+                to="/assets/AAPLH"
                 className="nav__dropdown-link"
                 onClick={() => setMenuOpen(false)}
+                role="menuitem"
               >
-                Stellar Network
-              </a>
-              <a
-                href="https://docs.stellar.org"
-                target="_blank"
-                rel="noopener noreferrer"
+                $AAPLH
+              </NavLink>
+              <NavLink
+                to="/assets/METAH"
                 className="nav__dropdown-link"
                 onClick={() => setMenuOpen(false)}
+                role="menuitem"
               >
-                Documentation
-              </a>
+                $METAH
+              </NavLink>
+              <NavLink
+                to="/assets/AMZNH"
+                className="nav__dropdown-link"
+                onClick={() => setMenuOpen(false)}
+                role="menuitem"
+              >
+                $AMZNH
+              </NavLink>
+              <NavLink
+                to="/assets/NVDAH"
+                className="nav__dropdown-link"
+                onClick={() => setMenuOpen(false)}
+                role="menuitem"
+              >
+                $NVDAH
+              </NavLink>
             </div>
 
             {/* Featured Section */}
@@ -255,7 +262,7 @@ const Navigation: React.FC = () => {
                 </svg>
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/ayushmankoley/Holden"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="nav__social-link"
