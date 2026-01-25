@@ -65,6 +65,11 @@ const SAMPLE_ASSETS = [
     imageUrl: "/apple.jpg",
   },
   {
+    assetCode: "METAH",
+    name: "Meta Holdings",
+    imageUrl: "/meta.png",
+  },
+  {
     assetCode: "XAUUSDH",
     name: "Gold Holdings",
     imageUrl: "/gold.png",
