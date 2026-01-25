@@ -2,7 +2,7 @@
 > **Hold What Matters.**  
 > Trade tokenized real-world assets on Stellar with instant settlement and 24/7 liquidity.
 
-![Holden UI Preview](/ui.png)
+![Holden UI Preview](/public/ui.png)
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-holdenn.vercel.app-blue?style=for-the-badge&logo=vercel)](https://holdenn.vercel.app/) [![View Count](https://views.whatilearened.today/views/github/ayushmankoley/Holden.svg)](https://github.com/ayushmankoley/Holden)
 
