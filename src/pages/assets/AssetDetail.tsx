@@ -101,13 +101,15 @@ const AssetDetail: React.FC = () => {
         const result = await issuanceController.get_price({
           asset_code: assetCode,
         });
-        // Convert from contract format to USD (price is USD * 1,000,000)
-        const priceValue = Number(result.result.price_per_unit) / 1000000;
+        // Price is stored as XLM units. Convert to USD ($0.21/XLM)
+        const priceInXlm = Number(result.result.price_per_unit);
+        const priceInUsd = priceInXlm * 0.21;
+
         setPrice(
-          priceValue.toLocaleString(undefined, {
+          `$${priceInUsd.toLocaleString(undefined, {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
-          }),
+          })} (~${priceInXlm} XLM)`
         );
       } catch (err) {
         console.error("Failed to fetch price:", err);
