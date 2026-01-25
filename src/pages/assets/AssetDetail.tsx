@@ -109,7 +109,7 @@ const AssetDetail: React.FC = () => {
           `$${priceInUsd.toLocaleString(undefined, {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2,
-          })} (~${priceInXlm} XLM)`
+          })} (~${priceInXlm} XLM)`,
         );
       } catch (err) {
         console.error("Failed to fetch price:", err);
@@ -129,7 +129,7 @@ const AssetDetail: React.FC = () => {
   const category = metadata?.category || "Asset";
 
   const handleTradeClick = () => {
-    void navigate("/dashboard");
+    void navigate("/account");
   };
 
   return (
