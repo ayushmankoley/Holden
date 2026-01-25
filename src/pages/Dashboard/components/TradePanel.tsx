@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Icon } from "@stellar/design-system";
 import * as StellarSdk from "@stellar/stellar-sdk";
+import * as IssuanceControllerClient from "issuance_controller";
 import issuanceController from "../../../contracts/issuance_controller";
 import { useWallet } from "../../../hooks/useWallet";
-import { networkPassphrase } from "../../../contracts/util";
+import { networkPassphrase, rpcUrl } from "../../../contracts/util";
 import type { MappedBalances } from "../../../util/wallet";
 
 interface TradePanelProps {
@@ -385,9 +386,13 @@ const TradePanel: React.FC<TradePanelProps> = ({
   };
 
   // Calculate total cost/return
-  // price_per_unit is in stroops per token-stroop, but effectively equals XLM per whole token
+  // price_per_unit is stored as USD * 1,000,000 (e.g., $248 = 248000000)
   const parsedAmount = parseFloat(amount) || 0;
-  const totalXlm = pricePerUnit ? parsedAmount * Number(pricePerUnit) : 0;
+  const priceInUsd = pricePerUnit ? Number(pricePerUnit) / 1000000 : 0;
+  const totalUsd = parsedAmount * priceInUsd;
+  // Convert to XLM (approx $0.21 per XLM)
+  const xlmPerUsd = 1 / 0.21;
+  const totalXlm = totalUsd * xlmPerUsd;
 
   // Get user's XLM balance
   const xlmBalance = parseFloat(
@@ -407,9 +412,12 @@ const TradePanel: React.FC<TradePanelProps> = ({
   const tokenBalance = getTokenBalance();
 
   const handleHalfClick = () => {
-    if (activeTab === "buy" && pricePerUnit) {
-      // Half of max tokens user can buy
-      const halfTokens = Math.floor(xlmBalance / Number(pricePerUnit) / 2);
+    if (activeTab === "buy" && priceInUsd > 0) {
+      // Calculate max tokens buyable with XLM balance
+      // XLM balance in USD = xlmBalance * 0.21
+      // Max tokens = XLM USD value / priceInUsd
+      const xlmValueInUsd = xlmBalance * 0.21;
+      const halfTokens = Math.floor(xlmValueInUsd / priceInUsd / 2);
       setAmount(halfTokens > 0 ? halfTokens.toString() : "");
     } else {
       // Half of token balance
@@ -418,9 +426,10 @@ const TradePanel: React.FC<TradePanelProps> = ({
   };
 
   const handleMaxClick = () => {
-    if (activeTab === "buy" && pricePerUnit) {
-      // Max tokens user can buy with their XLM (price is XLM per token)
-      const maxTokens = Math.floor(xlmBalance / Number(pricePerUnit));
+    if (activeTab === "buy" && priceInUsd > 0) {
+      // Max tokens user can buy with their XLM
+      const xlmValueInUsd = xlmBalance * 0.21;
+      const maxTokens = Math.floor(xlmValueInUsd / priceInUsd);
       setAmount(maxTokens > 0 ? maxTokens.toString() : "");
     } else {
       // Max tokens user can sell
@@ -449,8 +458,17 @@ const TradePanel: React.FC<TradePanelProps> = ({
 
     try {
       if (activeTab === "buy") {
+        // Create client with user's publicKey for transaction construction
+        const client = new IssuanceControllerClient.Client({
+          networkPassphrase,
+          contractId:
+            "CBA5OGYON72HS535NQKSLOGRWFZNYPIFBWYKIQDIDHLKHFN6DI2U5XVK",
+          rpcUrl,
+          publicKey: address,
+        });
+
         // Buy tokens - amount in stroops (1 token = 10^7 stroops)
-        const tx = await issuanceController.buy({
+        const tx = await client.buy({
           buyer: address,
           asset_code: selectedAsset,
           amount: BigInt(Math.floor(parsedAmount * 1e7)), // Convert to stroops
@@ -654,7 +672,7 @@ const TradePanel: React.FC<TradePanelProps> = ({
                   {isPriceLoading
                     ? "Loading..."
                     : pricePerUnit
-                      ? `${Number(pricePerUnit).toLocaleString()} XLM`
+                      ? `$${priceInUsd.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} (~${totalXlm.toFixed(0)} XLM)`
                       : "N/A"}
                 </span>
               </div>
@@ -674,7 +692,14 @@ const TradePanel: React.FC<TradePanelProps> = ({
                 <span className="trade-panel__summary-label">
                   {activeTab === "buy" ? "Total cost" : "Estimated value"}
                 </span>
-                <span>{totalXlm.toLocaleString()} XLM</span>
+                <span>
+                  $
+                  {totalUsd.toLocaleString(undefined, {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}{" "}
+                  (~{totalXlm.toFixed(0)} XLM)
+                </span>
               </div>
             </div>
           </>

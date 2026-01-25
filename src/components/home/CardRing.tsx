@@ -8,91 +8,91 @@ const SAMPLE_ASSETS = [
     assetCode: "TSLAH",
     name: "Tesla Holdings",
     imageUrl:
-      "https://ipfs.io/ipfs/bafkreidhtrfpnksjjw364fmzniudflfjhy2zauglkktfwkolyityzhruma",
+      "https://cloudflare-ipfs.com/ipfs/bafkreidhtrfpnksjjw364fmzniudflfjhy2zauglkktfwkolyityzhruma",
   },
   {
     assetCode: "AAPLH",
     name: "Apple Holdings",
     imageUrl:
-      "https://ipfs.io/ipfs/bafkreiaofe53sqvt3zu2t3zevid467sjvq5d4r7lr5y2odyfsnr44ubjm4",
+      "https://cloudflare-ipfs.com/ipfs/bafkreiaofe53sqvt3zu2t3zevid467sjvq5d4r7lr5y2odyfsnr44ubjm4",
   },
   {
     assetCode: "METAH",
     name: "Meta Holdings",
     imageUrl:
-      "https://ipfs.io/ipfs/bafkreihlop4ueosv4edaznxz4ydwznj2vn52mdsnukmiielwgk2qugsa5e",
+      "https://cloudflare-ipfs.com/ipfs/bafkreihlop4ueosv4edaznxz4ydwznj2vn52mdsnukmiielwgk2qugsa5e",
   },
   {
     assetCode: "AMZNH",
     name: "Amazon Holdings",
     imageUrl:
-      "https://ipfs.io/ipfs/bafkreiajud4sl2piim47ojfwsxkaxgik5sfgikspkyc4i7h5fzuukq6jgi",
+      "https://cloudflare-ipfs.com/ipfs/bafkreiajud4sl2piim47ojfwsxkaxgik5sfgikspkyc4i7h5fzuukq6jgi",
   },
   {
     assetCode: "NVDAH",
     name: "Nvidia Holdings",
     imageUrl:
-      "https://ipfs.io/ipfs/bafkreidmobhs3hgt5xx5hzqxkpuw5vo4yyfxdzsk354nung3xq3lcr4gny",
+      "https://cloudflare-ipfs.com/ipfs/bafkreidmobhs3hgt5xx5hzqxkpuw5vo4yyfxdzsk354nung3xq3lcr4gny",
   },
   {
     assetCode: "SONYH",
     name: "Sony Holdings",
     imageUrl:
-      "https://ipfs.io/ipfs/bafkreihfiehzmgppufkdlwzerwdfz46yolpkvv4vpdjznmlwmp2hdif32m",
+      "https://cloudflare-ipfs.com/ipfs/bafkreihfiehzmgppufkdlwzerwdfz46yolpkvv4vpdjznmlwmp2hdif32m",
   },
   {
     assetCode: "TCSH",
     name: "TCS Holdings",
     imageUrl:
-      "https://ipfs.io/ipfs/bafkreicds2sxkrmx7unlpmrrhdbuyy6j6kfhpsmdxhvvajzzffzjgc2inm",
+      "https://cloudflare-ipfs.com/ipfs/bafkreicds2sxkrmx7unlpmrrhdbuyy6j6kfhpsmdxhvvajzzffzjgc2inm",
   },
   {
     assetCode: "RELIANCEH",
     name: "Reliance Holdings",
     imageUrl:
-      "https://ipfs.io/ipfs/bafkreiaxjg4sia4e4j3vm2z6sbohuuuelm2ppga6hhjaabc4eyipjcwcri",
+      "https://cloudflare-ipfs.com/ipfs/bafkreiaxjg4sia4e4j3vm2z6sbohuuuelm2ppga6hhjaabc4eyipjcwcri",
   },
   {
     assetCode: "INFYH",
     name: "Infosys Holdings",
     imageUrl:
-      "https://ipfs.io/ipfs/bafkreiddwklqrte622qmmqwapvfmevsfsjugy53hd5i5vt56subfsd7mpm",
+      "https://cloudflare-ipfs.com/ipfs/bafkreiddwklqrte622qmmqwapvfmevsfsjugy53hd5i5vt56subfsd7mpm",
   },
   {
     assetCode: "BAJFINANCEH",
     name: "Bajaj Finance Holdings",
     imageUrl:
-      "https://ipfs.io/ipfs/bafkreidleyxfmrtn3dmpu4imw6zcrsrjkhz6hq6zwq7wsw5iwlbamad7we",
+      "https://cloudflare-ipfs.com/ipfs/bafkreidleyxfmrtn3dmpu4imw6zcrsrjkhz6hq6zwq7wsw5iwlbamad7we",
   },
   {
     assetCode: "XAUUSDH",
     name: "Gold Holdings",
     imageUrl:
-      "https://ipfs.io/ipfs/bafkreig4ycoqllxmm35jtzso2zof3d73te3qxoalfvxumextjmef5qmfeq",
+      "https://cloudflare-ipfs.com/ipfs/bafkreig4ycoqllxmm35jtzso2zof3d73te3qxoalfvxumextjmef5qmfeq",
   },
   {
     assetCode: "XAGUSDH",
     name: "Silver Holdings",
     imageUrl:
-      "https://ipfs.io/ipfs/bafkreigphz32byw6zhd7bfalknbedhi77l7tp4oiav3nuyc2cfamiubj3q",
+      "https://cloudflare-ipfs.com/ipfs/bafkreigphz32byw6zhd7bfalknbedhi77l7tp4oiav3nuyc2cfamiubj3q",
   },
   {
     assetCode: "MCDH",
     name: "McDonald's Corp Holdings",
     imageUrl:
-      "https://ipfs.io/ipfs/bafkreicezq6byaavlptynb7lj6dyco5bc6kg7lrzui5h7xruelcwqr5teq",
+      "https://cloudflare-ipfs.com/ipfs/bafkreicezq6byaavlptynb7lj6dyco5bc6kg7lrzui5h7xruelcwqr5teq",
   },
   {
     assetCode: "NKEH",
     name: "Nike Holdings",
     imageUrl:
-      "https://ipfs.io/ipfs/bafkreia2i4cwz5rsja6zf6a55shlc3t3wavoo3wcddvsejkbuhemazmcje",
+      "https://cloudflare-ipfs.com/ipfs/bafkreia2i4cwz5rsja6zf6a55shlc3t3wavoo3wcddvsejkbuhemazmcje",
   },
   {
     assetCode: "SBINH",
     name: "SBI Holdings",
     imageUrl:
-      "https://ipfs.io/ipfs/bafkreibu55yw7pblhnwpxw5akc54tgygjepm2n3qpse34farn53b25qroq",
+      "https://cloudflare-ipfs.com/ipfs/bafkreibu55yw7pblhnwpxw5akc54tgygjepm2n3qpse34farn53b25qroq",
   },
 ];
 
