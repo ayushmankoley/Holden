@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./Sections.css";
 
 /* ==========================================================================
@@ -32,10 +31,18 @@ export const AboutSection: React.FC = () => {
       <div className="about-section__grid">
         {/* Left Panel - Purple */}
         <div className="about-section__left">
-          <div>
+          <div className="about-section__brand">
             <p className="about-section__label">Created by</p>
-            <h2 className="about-section__title">The Holden</h2>
+            <img
+              src="/holden-logo.png"
+              alt="Holden Logo"
+              className="about-section__logo"
+            />
             <p className="about-section__subtitle">Team</p>
+            <p className="about-section__description">
+              Building the future of finance with regulated, tokenized
+              real-world assets. Secure, compliant, and always accessible.
+            </p>
           </div>
           <button className="about-section__cta">About us</button>
         </div>
@@ -70,65 +77,3 @@ export const AboutSection: React.FC = () => {
 /* ==========================================================================
    Features Section
    ========================================================================== */
-
-const FEATURE_TABS = [
-  "Asset Vault",
-  "Trading",
-  "Security",
-  "Compliance",
-  "API",
-];
-
-export const FeaturesSection: React.FC = () => {
-  const [activeTab, setActiveTab] = useState("Asset Vault");
-
-  return (
-    <section className="features-section">
-      <div className="features-section__content">
-        <h2 className="features-section__title">
-          A growing toolkit for
-          <br />
-          regulated investing
-        </h2>
-
-        <p className="features-section__subtitle">
-          Access everything with a single membership:
-        </p>
-
-        <div className="features-section__tabs" role="tablist">
-          {FEATURE_TABS.map((tab) => (
-            <button
-              key={tab}
-              className={`features-section__tab ${activeTab === tab ? "is-active" : ""}`}
-              onClick={() => setActiveTab(tab)}
-              role="tab"
-              aria-selected={activeTab === tab}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
-
-        <div className="features-section__featured">
-          <div className="features-section__featured-card">
-            <p className="features-section__featured-label">
-              PART OF THE
-              <span className="features-section__featured-badge">
-                MEMBERSHIP
-              </span>
-            </p>
-            <div
-              className="features-section__featured-glyph"
-              aria-hidden="true"
-            >
-              ✶
-            </div>
-            <h3 className="features-section__featured-title">
-              The {activeTab}
-            </h3>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};

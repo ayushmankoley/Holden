@@ -1,9 +1,5 @@
 import HeroSection from "../components/home/HeroSection";
-import {
-  DescriptionSection,
-  AboutSection,
-  FeaturesSection,
-} from "../components/home/Sections";
+import { DescriptionSection, AboutSection } from "../components/home/Sections";
 
 const Home: React.FC = () => {
   return (
@@ -11,7 +7,6 @@ const Home: React.FC = () => {
       <HeroSection />
       <DescriptionSection />
       <AboutSection />
-      <FeaturesSection />
     </>
   );
 };

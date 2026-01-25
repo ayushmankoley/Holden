@@ -53,6 +53,18 @@
   justify-content: space-between;
   position: relative;
   overflow: hidden;
+  min-height: 400px;
+}
+
+.about-section__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  text-align: center;
 }
 
 .about-section__label {
@@ -62,17 +74,29 @@
   margin-bottom: var(--space-4);
 }
 
-.about-section__title {
-  font-family: var(--font-display);
-  font-size: var(--size-display-lg);
-  font-weight: var(--weight-extrabold);
-  color: var(--white);
-  line-height: var(--leading-display);
+.about-section__logo {
+  max-width: 100%;
+  width: 95%;
+  height: 70%;
+  object-fit: contain;
+  /* Use mix-blend-mode to make the black background transparent if needed on the purple bg */
+  mix-blend-mode: screen;
+  filter: brightness(1.1);
+  margin: var(--space-4) 0;
 }
 
 .about-section__subtitle {
   font-size: var(--size-body-lg);
   color: rgba(255, 255, 255, 0.7);
+}
+
+.about-section__description {
+  font-size: var(--size-caption);
+  /* Smaller text */
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+  max-width: 80%;
+  margin-top: 0;
 }
 
 .about-section__cta {
