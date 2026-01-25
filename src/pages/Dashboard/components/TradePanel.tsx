@@ -450,14 +450,11 @@ const TradePanel: React.FC<TradePanelProps> = ({
     try {
       if (activeTab === "buy") {
         // Buy tokens - amount in stroops (1 token = 10^7 stroops)
-        const tx = await issuanceController.buy(
-          {
-            buyer: address,
-            asset_code: selectedAsset,
-            amount: BigInt(Math.floor(parsedAmount * 1e7)), // Convert to stroops
-          },
-          { publicKey: address }, // Required for transaction construction
-        );
+        const tx = await issuanceController.buy({
+          buyer: address,
+          asset_code: selectedAsset,
+          amount: BigInt(Math.floor(parsedAmount * 1e7)), // Convert to stroops
+        });
 
         // Sign and submit
         await tx.signAndSend({ signTransaction });
