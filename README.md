@@ -2,9 +2,9 @@
 > **Hold What Matters.**  
 > Trade tokenized real-world assets on Stellar with instant settlement and 24/7 liquidity.
 
-![Holden UI Preview](/UI.PNG)
+![Holden UI Preview](/ui.PNG)
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-holdenn.vercel.app-blue?style=for-the-badge&logo=vercel)](https://holdenn.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-holdenn.vercel.app-blue?style=for-the-badge&logo=vercel)](https://holdenn.vercel.app/) [![View Count](https://views.whatilearened.today/views/github/ayushmankoley/Holden.svg)](https://github.com/ayushmankoley/Holden)
 
 ---
 
@@ -17,7 +17,6 @@ By leveraging Stellar’s speed and low fees, Holden provides a seamless trading
 ### Key Features
 - **Tokenized Assets**: Trade Tesla ($TSLAH), Apple ($AAPLH), Gold ($XAUUSDH) and more.
 - **Instant Settlement**: Trades settle in seconds on the Stellar ledger.
-- **Admin Controls**: Robust issuance and redemption controls via smart contracts.
 - **KYC Integration**: Compliance-ready architecture with separate KYC registry.
 
 ---
@@ -62,6 +61,47 @@ Create `environments.toml` in the root:
 [testnet]
 network_passphrase = "Test SDF Network ; September 2015"
 rpc_url = "https://soroban-testnet.stellar.org"
+```
+
+Also verify your `.env` file contains:
+
+```bash
+# ===============================
+# Scaffold environment
+# ===============================
+STELLAR_SCAFFOLD_ENV=staging
+
+# ===============================
+# Config directory
+# ===============================
+XDG_CONFIG_HOME=".config"
+
+# ===============================
+# Frontend Stellar network (TESTNET)
+# ===============================
+PUBLIC_STELLAR_NETWORK="TESTNET"
+PUBLIC_STELLAR_NETWORK_PASSPHRASE="Test SDF Network ; September 2015"
+PUBLIC_STELLAR_RPC_URL="https://soroban-testnet.stellar.org"
+PUBLIC_STELLAR_HORIZON_URL="https://horizon-testnet.stellar.org"
+```
+
+## 📂 Project Structure
+
+```
+holden/
+├── contracts/               # Soroban smart contracts
+│   ├── asset_registry/      # Manages asset metadata
+│   ├── issuance_controller/ # Handles minting logic
+│   ├── redemption_controller/ # Handles redemption logic
+│   └── kyc_registry/        # Allowlist for users
+├── src/                     # Frontend Application
+│   ├── components/          # Reusable UI components
+│   ├── pages/               # Route pages (Home, Dashboard, AssetDetail)
+│   └── contracts/           # Generated contract clients
+├── scripts/                 # Maintenance scripts
+│   ├── update-prices.sh     # Set asset prices and payment assets
+│   └── link-and-authorize.sh # Link tokens and set admin rights
+└── public/                  # Static assets
 ```
 
 ### 3. Run Development Server
