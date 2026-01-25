@@ -101,8 +101,8 @@ const AssetDetail: React.FC = () => {
         const result = await issuanceController.get_price({
           asset_code: assetCode,
         });
-        // Convert from contract format to USD (price is in cents * 10000)
-        const priceValue = Number(result.result.price_per_unit) / 10000;
+        // Convert from contract format to USD (price is USD * 1,000,000)
+        const priceValue = Number(result.result.price_per_unit) / 1000000;
         setPrice(
           priceValue.toLocaleString(undefined, {
             minimumFractionDigits: 2,

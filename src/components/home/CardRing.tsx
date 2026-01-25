@@ -2,97 +2,67 @@ import { useEffect, useState } from "react";
 import AssetCard from "./AssetCard";
 import "./CardRing.css";
 
-// 12 sample assets for display with IPFS images
+// 12 sample assets for display with local images
 const SAMPLE_ASSETS = [
   {
     assetCode: "TSLAH",
     name: "Tesla Holdings",
-    imageUrl:
-      "https://cloudflare-ipfs.com/ipfs/bafkreidhtrfpnksjjw364fmzniudflfjhy2zauglkktfwkolyityzhruma",
+    imageUrl: "/tesla.png",
   },
   {
     assetCode: "AAPLH",
     name: "Apple Holdings",
-    imageUrl:
-      "https://cloudflare-ipfs.com/ipfs/bafkreiaofe53sqvt3zu2t3zevid467sjvq5d4r7lr5y2odyfsnr44ubjm4",
+    imageUrl: "/apple.jpg",
   },
   {
     assetCode: "METAH",
     name: "Meta Holdings",
-    imageUrl:
-      "https://cloudflare-ipfs.com/ipfs/bafkreihlop4ueosv4edaznxz4ydwznj2vn52mdsnukmiielwgk2qugsa5e",
+    imageUrl: "/meta.png",
   },
   {
     assetCode: "AMZNH",
     name: "Amazon Holdings",
-    imageUrl:
-      "https://cloudflare-ipfs.com/ipfs/bafkreiajud4sl2piim47ojfwsxkaxgik5sfgikspkyc4i7h5fzuukq6jgi",
+    imageUrl: "/amazon.png",
   },
   {
     assetCode: "NVDAH",
     name: "Nvidia Holdings",
-    imageUrl:
-      "https://cloudflare-ipfs.com/ipfs/bafkreidmobhs3hgt5xx5hzqxkpuw5vo4yyfxdzsk354nung3xq3lcr4gny",
+    imageUrl: "/nvidia.png",
   },
   {
     assetCode: "SONYH",
     name: "Sony Holdings",
-    imageUrl:
-      "https://cloudflare-ipfs.com/ipfs/bafkreihfiehzmgppufkdlwzerwdfz46yolpkvv4vpdjznmlwmp2hdif32m",
+    imageUrl: "/sony.png",
   },
   {
     assetCode: "TCSH",
     name: "TCS Holdings",
-    imageUrl:
-      "https://cloudflare-ipfs.com/ipfs/bafkreicds2sxkrmx7unlpmrrhdbuyy6j6kfhpsmdxhvvajzzffzjgc2inm",
+    imageUrl: "/tcs.webp",
   },
   {
     assetCode: "RELIANCEH",
     name: "Reliance Holdings",
-    imageUrl:
-      "https://cloudflare-ipfs.com/ipfs/bafkreiaxjg4sia4e4j3vm2z6sbohuuuelm2ppga6hhjaabc4eyipjcwcri",
+    imageUrl: "/reliaance.png",
   },
   {
     assetCode: "INFYH",
     name: "Infosys Holdings",
-    imageUrl:
-      "https://cloudflare-ipfs.com/ipfs/bafkreiddwklqrte622qmmqwapvfmevsfsjugy53hd5i5vt56subfsd7mpm",
+    imageUrl: "/infosys.jpg",
   },
   {
     assetCode: "BAJFINANCEH",
     name: "Bajaj Finance Holdings",
-    imageUrl:
-      "https://cloudflare-ipfs.com/ipfs/bafkreidleyxfmrtn3dmpu4imw6zcrsrjkhz6hq6zwq7wsw5iwlbamad7we",
+    imageUrl: "/bajaj.jpg",
   },
   {
     assetCode: "XAUUSDH",
     name: "Gold Holdings",
-    imageUrl:
-      "https://cloudflare-ipfs.com/ipfs/bafkreig4ycoqllxmm35jtzso2zof3d73te3qxoalfvxumextjmef5qmfeq",
+    imageUrl: "/gold.png",
   },
   {
     assetCode: "XAGUSDH",
     name: "Silver Holdings",
-    imageUrl:
-      "https://cloudflare-ipfs.com/ipfs/bafkreigphz32byw6zhd7bfalknbedhi77l7tp4oiav3nuyc2cfamiubj3q",
-  },
-  {
-    assetCode: "MCDH",
-    name: "McDonald's Corp Holdings",
-    imageUrl:
-      "https://cloudflare-ipfs.com/ipfs/bafkreicezq6byaavlptynb7lj6dyco5bc6kg7lrzui5h7xruelcwqr5teq",
-  },
-  {
-    assetCode: "NKEH",
-    name: "Nike Holdings",
-    imageUrl:
-      "https://cloudflare-ipfs.com/ipfs/bafkreia2i4cwz5rsja6zf6a55shlc3t3wavoo3wcddvsejkbuhemazmcje",
-  },
-  {
-    assetCode: "SBINH",
-    name: "SBI Holdings",
-    imageUrl:
-      "https://cloudflare-ipfs.com/ipfs/bafkreibu55yw7pblhnwpxw5akc54tgygjepm2n3qpse34farn53b25qroq",
+    imageUrl: "/silver.png",
   },
 ];
 
